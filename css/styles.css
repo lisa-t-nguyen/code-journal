@@ -1,0 +1,12 @@
+.placeholderimg {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
