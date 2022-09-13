@@ -16,13 +16,17 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
+  <header class="h2element">
+    <div class="container row">
+      <div class="column-half">
+        <h2>Code Journal</h2>
+      </div>
+    </div>
   </header>
   <main>
     <div data-view="entry-form" class="container">
       <form action="" method="get">
-        <div class="newentry column-half">
-          <h2>Code Journal</h2>
+        <div class="newentry column-full">
           <h1>New Entry</h1>
         </div>
         <div class="row">
@@ -30,16 +34,20 @@
             <img src="/images/placeholder-image-square.jpg" class="placeholderimg">
           </div>
           <div class="column-half">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" required class="input">
-            <label for="photo">Photo URL</label>
-            <input type="text" name="photo" id="photo" required class="input">
+            <div class="title">
+              <label for="title" class="input">Title</label>
+              <input type="text" name="title" id="title" required class="input">
+            </div>
+            <div class="photourl">
+              <label for="photo" class="input">Photo URL</label>
+              <input type="text" name="photo" id="photo" required class="input">
+            </div>
           </div>
         </div>
         <div class="notes row">
           <div class="column-full">
-            <label for="notes">Notes</label>
-            <textarea name="notes" id="notes" class="input"></textarea>
+            <label for="notes" class="input">Notes</label>
+            <textarea name="notes" id="notes" class="input" rows="8"></textarea>
           </div>
         </div>
         <div class="column-full">
