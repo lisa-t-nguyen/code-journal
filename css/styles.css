@@ -1,0 +1,61 @@
+.placeholderimg {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #1c1614;
+  margin-top: 0.5rem;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.codejournal {
+  width: 575px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.savebutton {
+  color: white;
+  background-color: #4b2373;
+  border-radius: 0.15rem;
+  border: none;
+  padding: 0.6rem;
+}
+
+.title,
+.photourl,
+.notes {
+  padding-top: 0.6rem;
+  padding-bottom: 1rem;
+}
+
+h1 {
+  font-family: sans-serif;
+}
+
+.h2element {
+  font-size: 0.8rem;
+  font-family:
+    "Lucida Sans",
+    "Lucida Sans Regular",
+    "Lucida Grande",
+    "Lucida Sans Unicode",
+    Geneva,
+    Verdana,
+    sans-serif;
+  color: white;
+  background-color: #4b2373;
+  height: 3rem;
+}
+
+body {
+  background-color: #ececec;
+}
