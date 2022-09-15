@@ -18,13 +18,24 @@
 <body>
   <header class="h2element">
     <div class="container row">
-      <div class="column-half">
+      <div class="column-half row nav">
         <h2>Code Journal</h2>
+        <h3><a href="#" class="navigation">Entries</a></h3>
       </div>
     </div>
   </header>
   <main>
-    <div data-view="entry-form" class="container">
+    <div data-view="entries" class="container entriesview hidden" id="entriesdiv">
+      <div class="entrybar column-full">
+        <h1 class="entrytext">Entries</h1>
+        <input type="button" name="newbutton" id="newbutton" value="NEW" class="newbutton">
+      </div>
+      <div class="container column-full">
+        <ul class="ullist">
+        </ul>
+      </div>
+    </div>
+    <div data-view="entry-form" class="container journalentryview view" id="entryformdiv">
       <form action="" method="get" id="journalentry">
         <div class="newentry column-full">
           <h1>New Entry</h1>
