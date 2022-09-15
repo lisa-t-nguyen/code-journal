@@ -20,37 +20,22 @@
     <div class="container row">
       <div class="column-half row nav">
         <h2>Code Journal</h2>
-        <h3><a href="#entries" class="navigation">Entries</a></h3>
+        <h3><a href="#" class="navigation">Entries</a></h3>
       </div>
     </div>
   </header>
   <main>
-    <div data-view="entries" class="container">
-      <div class="entrybar">
+    <div data-view="entries" class="container entriesview hidden" id="entriesdiv">
+      <div class="entrybar column-full">
         <h1 class="entrytext">Entries</h1>
-        <input type="submit" name="newbutton" id="newbutton" value="NEW" class="newbutton">
+        <input type="button" name="newbutton" id="newbutton" value="NEW" class="newbutton">
       </div>
-      <div class="row">
-        <div class="column-half">
-          <ul class="ullist">
-            <li><img src="/images/placeholder-image-square.jpg" class="placeholderimg"></li>
-          </ul>
-        </div>
-        <div class="column-half">
-          <ul class="ullist">
-            <li>
-              <h1>Ada Lovelace</h1>
-              Augusta Ada King, Countess of Lovelace was an English mathematician and writer,
-              chiefly known for her work on Charles Babbage's proposed mechanical general-purpose computer,
-              the Analytical Engine.
-              She was the first to recognize that the machine had applications beyond pure calculation,
-              and to have published the first algorithm intended to be carried out by such a machine.
-            </li>
-          </ul>
-        </div>
+      <div class="container column-full">
+        <ul class="ullist">
+        </ul>
       </div>
     </div>
-    <div data-view="entry-form" class="container">
+    <div data-view="entry-form" class="container journalentryview view" id="entryformdiv">
       <form action="" method="get" id="journalentry">
         <div class="newentry column-full">
           <h1>New Entry</h1>
