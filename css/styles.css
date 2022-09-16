@@ -1,5 +1,6 @@
 .placeholderimg,
-.placeimg {
+.placeimg,
+.entrytitle {
   width: 100%;
 }
 
@@ -48,6 +49,10 @@
   border: none;
   padding: 0.6rem;
   height: 2rem;
+}
+
+#editbutton {
+  font-size: 1.5rem;
 }
 
 .title,
