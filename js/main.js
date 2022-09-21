@@ -5,6 +5,8 @@ var $newButton = document.getElementById('newbutton');
 var $navigation = document.querySelector('.navigation');
 var $entriesView = document.querySelector('.entriesview');
 var $journalEntryView = document.querySelector('.journalentryview');
+var $notesArea = document.getElementById('notes');
+var $inputTitle = document.getElementById('title');
 
 $photo.addEventListener('input', function () {
   if ($photo.value !== '') {
@@ -34,6 +36,15 @@ $journalEntry.addEventListener('submit', function (event) {
     dataID
   };
   data.entries.unshift(object);
+  if (data.editing !== null) {
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].dataID === data.editing.dataID) {
+        data.entries[i].titleValue = data.editing.titleValue;
+        data.entries[i].photoURL = data.editing.photoURL;
+        data.entries[i].notesValue = data.editing.notesValue;
+      }
+    }
+  }
   viewChange('entries');
   var newEntry = grabEntry(object);
   ulList.prepend(newEntry);
@@ -42,8 +53,13 @@ $journalEntry.addEventListener('submit', function (event) {
 });
 
 function grabEntry(object) {
+  if (object === null) {
+    return;
+  }
   var li = document.createElement('li');
   li.classList.add('row');
+  li.classList.add('dataID');
+  li.setAttribute('data-entry-id', object.dataID);
   var divFirst = document.createElement('div');
   divFirst.classList.add('column-half');
   li.appendChild(divFirst);
@@ -97,3 +113,22 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
   viewChange(data.view);
 });
+
+ulList.addEventListener('click', function (event) {
+  if (event.target.matches('#editbutton')) {
+    var closestTarget = event.target.closest('.dataID');
+    var dataEntryID = closestTarget.getAttribute('data-entry-id');
+    dataEntryID = Number(dataEntryID);
+    for (let i = 0; i < data.entries.length; i++) {
+      if (dataEntryID === data.entries[i].dataID) {
+        data.editing = data.entries[i];
+        viewChange('entry-form');
+        $inputTitle.value = data.editing.titleValue;
+        $photo.value = data.editing.photoURL;
+        $imgSrc.src = data.editing.photoURL;
+        $notesArea.value = data.editing.notesValue;
+      }
+    }
+  }
+}
+);
