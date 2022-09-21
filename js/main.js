@@ -41,7 +41,7 @@ $journalEntry.addEventListener('submit', function (event) {
       if (data.entries[i].dataID === data.editing.dataID) {
         data.entries[i].titleValue = data.editing.titleValue;
         data.entries[i].photoURL = data.editing.photoURL;
-        data.entries[i].$imgSrc.src = data.editing.photoURL;
+        $imgSrc.src = data.editing.photoURL;
         data.entries[i].notesValue = data.editing.notesValue;
       }
     }
