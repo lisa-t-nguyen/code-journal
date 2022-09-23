@@ -111,3 +111,20 @@ body {
   width: 100%;
   padding-inline-start: 0;
 }
+
+.view {
+  display: block;
+}
+
+.entriestext {
+  font-family:
+    "Lucida Sans",
+    "Lucida Sans Regular",
+    "Lucida Grande",
+    "Lucida Sans Unicode",
+    Geneva,
+    Verdana,
+    sans-serif;
+  display: flex;
+  justify-content: center;
+}

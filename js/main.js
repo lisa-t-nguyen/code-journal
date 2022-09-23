@@ -7,6 +7,8 @@ var $entriesView = document.querySelector('.entriesview');
 var $journalEntryView = document.querySelector('.journalentryview');
 var $notesArea = document.getElementById('notes');
 var $inputTitle = document.getElementById('title');
+var ulList = document.querySelector('.ullist');
+var entriesText = document.querySelector('.entriestext');
 
 $photo.addEventListener('input', function () {
   if ($photo.value !== '') {
@@ -20,37 +22,6 @@ $newButton.addEventListener('click', function (event) {
 
 $navigation.addEventListener('click', function (event) {
   viewChange('entries');
-});
-
-$journalEntry.addEventListener('submit', function (event) {
-  event.preventDefault();
-  var titleValue = $journalEntry.elements.title.value;
-  var photoURL = $journalEntry.elements.photo.value;
-  var notesValue = $journalEntry.elements.notes.value;
-  var dataID = data.nextEntryId;
-  data.nextEntryId++;
-  var object = {
-    titleValue,
-    photoURL,
-    notesValue,
-    dataID
-  };
-  data.entries.unshift(object);
-  if (data.editing !== null) {
-    for (let i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].dataID === data.editing.dataID) {
-        data.entries[i].titleValue = data.editing.titleValue;
-        data.entries[i].photoURL = data.editing.photoURL;
-        $imgSrc.src = data.editing.photoURL;
-        data.entries[i].notesValue = data.editing.notesValue;
-      }
-    }
-  }
-  viewChange('entries');
-  var newEntry = grabEntry(object);
-  ulList.prepend(newEntry);
-  $journalEntry.reset();
-  $imgSrc.setAttribute('src', '/images/placeholder-image-square.jpg');
 });
 
 function grabEntry(object) {
@@ -89,7 +60,53 @@ function grabEntry(object) {
   return li;
 }
 
-var ulList = document.querySelector('.ullist');
+$journalEntry.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var titleValue = $journalEntry.elements.title.value;
+  var photoURL = $journalEntry.elements.photo.value;
+  var notesValue = $journalEntry.elements.notes.value;
+  if (data.editing !== null) {
+    for (let i = 0; i < data.entries.length; i++) {
+      if (data.editing.dataID === data.entries[i].dataID) {
+        var editObject = {
+          titleValue,
+          photoURL,
+          notesValue,
+          dataID: data.editing.dataID
+        };
+        data.entries.splice(i, 1, editObject);
+      }
+    }
+    var li = document.querySelectorAll('.dataID');
+    for (let i = 0; i < li.length; i++) {
+      var dataEntryID = Number(li[i].getAttribute('data-entry-id'));
+      if (dataEntryID === data.editing.dataID) {
+        li[i].replaceWith(grabEntry(editObject));
+      }
+    }
+  } else {
+    var dataID = data.nextEntryId;
+    data.nextEntryId++;
+    var object = {
+      titleValue,
+      photoURL,
+      notesValue,
+      dataID
+    };
+    var newEntry = grabEntry(object);
+    ulList.prepend(newEntry);
+    data.entries.unshift(object);
+    $journalEntry.reset();
+    $imgSrc.setAttribute('src', '/images/placeholder-image-square.jpg');
+  }
+  if (data.entries.length === 0) {
+    entriesText.className = 'view entriestext';
+  } else {
+    entriesText.className = 'hidden entriestext';
+  }
+  data.editing = null;
+  viewChange('entries');
+});
 
 function viewChange(string) {
   data.view = string;
@@ -111,6 +128,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < data.entries.length; i++) {
     var liList = grabEntry(data.entries[i]);
     ulList.append(liList);
+    if (data.entries.length === 0) {
+      entriesText.className = 'view entriestext';
+    } else {
+      entriesText.className = 'hidden entriestext';
+    }
   }
   viewChange(data.view);
 });
