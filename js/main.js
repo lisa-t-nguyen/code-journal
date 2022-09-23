@@ -9,6 +9,7 @@ var $notesArea = document.getElementById('notes');
 var $inputTitle = document.getElementById('title');
 var ulList = document.querySelector('.ullist');
 var entriesText = document.querySelector('.entriestext');
+var newEntryText = document.getElementById('newentry');
 
 $photo.addEventListener('input', function () {
   if ($photo.value !== '') {
@@ -66,6 +67,7 @@ $journalEntry.addEventListener('submit', function (event) {
   var photoURL = $journalEntry.elements.photo.value;
   var notesValue = $journalEntry.elements.notes.value;
   if (data.editing !== null) {
+    newEntryText.textContent = 'Edit Entry';
     for (let i = 0; i < data.entries.length; i++) {
       if (data.editing.dataID === data.entries[i].dataID) {
         var editObject = {
@@ -146,6 +148,7 @@ ulList.addEventListener('click', function (event) {
       if (dataEntryID === data.entries[i].dataID) {
         data.editing = data.entries[i];
         viewChange('entry-form');
+        newEntryText.textContent = 'Edit Entry';
         $inputTitle.value = data.editing.titleValue;
         $photo.value = data.editing.photoURL;
         $imgSrc.src = data.editing.photoURL;
