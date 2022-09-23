@@ -1,5 +1,6 @@
 .placeholderimg,
-.placeimg {
+.placeimg,
+.entrytitle {
   width: 100%;
 }
 
@@ -48,6 +49,10 @@
   border: none;
   padding: 0.6rem;
   height: 2rem;
+}
+
+#editbutton {
+  font-size: 1.5rem;
 }
 
 .title,
@@ -105,4 +110,21 @@ body {
   list-style: none;
   width: 100%;
   padding-inline-start: 0;
+}
+
+.view {
+  display: block;
+}
+
+.entriestext {
+  font-family:
+    "Lucida Sans",
+    "Lucida Sans Regular",
+    "Lucida Grande",
+    "Lucida Sans Unicode",
+    Geneva,
+    Verdana,
+    sans-serif;
+  display: flex;
+  justify-content: center;
 }
