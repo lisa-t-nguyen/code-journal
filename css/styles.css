@@ -16,6 +16,17 @@
 .button {
   display: flex;
   justify-content: flex-end;
+  align-items: baseline;
+}
+
+.spaceholder {
+  width: 100%;
+}
+
+.deleteentry {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  width: 18%;
 }
 
 .entrybar {
@@ -127,4 +138,60 @@ body {
     sans-serif;
   display: flex;
   justify-content: center;
+}
+
+.deletemodalbox {
+  background-color: white;
+  position: absolute;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 600px;
+}
+
+.confirmbutton {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.deleteentrytext {
+  font-weight: bold;
+}
+
+.cancelbutton {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: lightgray;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.buttondiv {
+  display: flex;
+  margin-top: 40px;
+  column-gap: 70px;
+}
+
+.outermodalbox {
+  display: flex;
+  margin-left: 35px;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

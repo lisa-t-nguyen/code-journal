@@ -10,6 +10,11 @@ var $inputTitle = document.getElementById('title');
 var ulList = document.querySelector('.ullist');
 var entriesText = document.querySelector('.entriestext');
 var newEntryText = document.getElementById('newentry');
+var deleteEntry = document.querySelector('.deleteentry');
+var modalBox = document.querySelector('.deletemodalbox');
+var cancelButton = document.querySelector('.cancelbutton');
+var confirmButton = document.querySelector('.confirmbutton');
+var overlayDiv = document.getElementById('overlay');
 
 $photo.addEventListener('input', function () {
   if ($photo.value !== '') {
@@ -148,6 +153,7 @@ ulList.addEventListener('click', function (event) {
       if (dataEntryID === data.entries[i].dataID) {
         data.editing = data.entries[i];
         viewChange('entry-form');
+        deleteEntry.className = 'deleteentry view';
         newEntryText.textContent = 'Edit Entry';
         $inputTitle.value = data.editing.titleValue;
         $photo.value = data.editing.photoURL;
@@ -158,3 +164,35 @@ ulList.addEventListener('click', function (event) {
   }
 }
 );
+
+deleteEntry.addEventListener('click', function (event) {
+  if (event.target.matches('.deleteentry')) {
+    modalBox.className = 'deletemodalbox';
+    overlayDiv.className = 'overlay';
+  }
+});
+
+confirmButton.addEventListener('click', function (event) {
+  if (event.target.matches('.confirmbutton')) {
+    var li = document.querySelectorAll('.dataID');
+    for (let i = 0; i < li.length; i++) {
+      var dataEntryID = Number(li[i].getAttribute('data-entry-id'));
+      if (dataEntryID === data.editing.dataID) {
+        li[i].remove();
+        if (dataEntryID === data.entries[i].dataID) {
+          data.entries.splice(i, 1);
+        }
+      }
+      modalBox.className = 'deletemodalbox hidden';
+      overlayDiv.className = '';
+      viewChange('entries');
+    }
+  }
+});
+
+cancelButton.addEventListener('click', function (event) {
+  if (event.target.matches('.cancelbutton')) {
+    modalBox.className = 'deletemodalbox hidden';
+    overlayDiv.className = '';
+  }
+});
