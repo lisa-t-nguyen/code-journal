@@ -1,6 +1,7 @@
 # Code Journal
 
 A dynamic HTML, CSS, and JavaScript web application for users who want to create journal entries and record notes.
+
 ![image](https://user-images.githubusercontent.com/109618931/228308742-ec7f176b-1cca-4d5b-bc77-dc40d34b92d5.png)
 
 
